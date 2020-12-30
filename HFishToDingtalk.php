@@ -15,7 +15,6 @@ function request_by_curl($remote_server, $post_string) {
     return $data;
 }
 
-
 $content = file_get_contents('php://input');
 $post    = json_decode($content, true);
 $project = $post['project'];
@@ -25,10 +24,12 @@ $ip = $post['ip'];
 $info = $post['info'];
 $time = $post['time'];
 
-
-    $webhook = "https://oapi.dingtalk.com/robot/send?access_token=Token";
+if($project){
+    $webhook = "https://oapi.dingtalk.com/robot/send?access_token=修改为自己机器人的Token";
     $message="蜜罐来攻击啦~"."\r\n告警项目：".$project."\r\n告警类型：".$type."\r\n告警来源：".$agent."\r\n攻击地址：".$ip."\r\n攻击载荷：".$info."\r\n攻击时间：".$time."\r\n";    $data = array ('msgtype' => 'text','text' => array ('content' => $message),'at' => array ('isAtAll' => true));
-    $data_string = json_encode($data);    $result = request_by_curl($webhook, $data_string);
+    $data_string = json_encode($data);
+	$result = request_by_curl($webhook, $data_string);
+}
 
 
 //echo $result;
