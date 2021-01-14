@@ -1,3 +1,7 @@
+#此项目已合并至https://github.com/HolyGu/HFishWebHook
+
+
+
 # HFishToDingTalk
 HFish钉钉告警
 
